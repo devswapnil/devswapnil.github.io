@@ -1,3 +1,8 @@
-body { 
-  color: red;
+.masthead-logo {
+  width: 230px;
+  height: 230px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 6px!important;
+  border-style: none;
 }
