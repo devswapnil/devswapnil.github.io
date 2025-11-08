@@ -6,72 +6,213 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/favicon.ico">
-
-  <title>Swapnil Mishra | Full Stack Developer</title>
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/cover.css" rel="stylesheet">
-
+  <title>Swapnil Mishra | Product-minded Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-  <div class="site-wrapper">
-      <div id="tagscloud">
-          <a href="#" class="tagc1" style="left: 113.554px; top: 30.1925px; z-index: 102; opacity: 0.118615; display: none;">jQuery</a>
-          <a href="#" class="tagc3" style="left: 136.828px; top: 34.752px; z-index: 102; opacity: 0.111076; color: rgb(255, 255, 255); padding: 5px; display: none;">CSS</a>
-          <a href="#" class="tagc2" style="left: 95.415px; top: 30.9076px; z-index: 103; opacity: 0.119797; color: rgb(255, 255, 255); padding: 5px; display: none;">PHP</a>
-          <a href="#" class="tagc1" style="left: 58.2577px; top: 45.3038px; z-index: 107; opacity: 0.181538; color: rgb(255, 255, 255); padding: 5px;">JavaScript</a>
-          <a href="#" class="tagc3" style="left: 65.4534px; top: 42.9294px; z-index: 119; opacity: 0.389813; color: rgb(255, 255, 255); padding: 5px;">CSS</a>
-          <a href="#" class="tagc2" style="left: 108.202px; top: 30.0199px; z-index: 102; opacity: 0.117901; color: rgb(255, 255, 255); padding: 5px; display: none;">CSS3</a>
-          <a href="#" class="tagc1" style="left: 113.554px; top: 30.1925px; z-index: 102; opacity: 0.118615; display: none;">ReactJs</a>
-          <a href="#" class="tagc3" style="left: 136.828px; top: 34.752px; z-index: 102; opacity: 0.111076; color: rgb(255, 255, 255); padding: 5px; display: none;">AngulaJs</a>
-          <a href="#" class="tagc2" style="left: 95.415px; top: 30.9076px; z-index: 103; opacity: 0.119797; color: rgb(255, 255, 255); padding: 5px; display: none;">NodeJs</a>
-          <a href="#" class="tagc1" style="left: 58.2577px; top: 45.3038px; z-index: 107; opacity: 0.181538; color: rgb(255, 255, 255); padding: 5px;">MySQL</a>
-          <a href="#" class="tagc3" style="left: 65.4534px; top: 42.9294px; z-index: 119; opacity: 0.389813; color: rgb(255, 255, 255); padding: 5px;">Cassandra</a>
-          <a href="#" class="tagc2" style="left: 108.202px; top: 30.0199px; z-index: 102; opacity: 0.117901; color: rgb(255, 255, 255); padding: 5px; display: none;">Boostrap</a>
-          <a href="#" class="tagc1" style="left: 113.554px; top: 30.1925px; z-index: 102; opacity: 0.118615; display: none;">Drupal</a>
+  <header class="hero" id="home">
+    <nav class="nav">
+      <a class="logo" href="#home">SM</a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+      </button>
+      <ul id="primary-navigation" class="nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contributions">Highlights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero__content">
+      <div class="hero__copy">
+        <p class="eyebrow">Hello, I am</p>
+        <h1>Swapnil Mishra</h1>
+        <p class="hero__lead">Product-focused full stack engineer crafting reliable experiences from concept to launch.
+          I thrive at the intersection of thoughtful UX, robust architecture, and collaborative delivery.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#contact">Let's work together</a>
+          <a class="btn btn--ghost" href="#experience">View experience</a>
         </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="orbit">
+          <span class="planet"></span>
+          <span class="satellite"></span>
+          <span class="satellite satellite--two"></span>
+        </div>
+        <div class="badge">9+ years of building for the web</div>
+      </div>
+    </div>
+    <div class="hero__scroll-hint">
+      <span>Scroll to explore</span>
+    </div>
+  </header>
 
-    <div class="site-wrapper-inner">
-      <div class="cover-container">
-        <div class="masthead clearfix">
-          <div class="inner">
-            <h3 class="masthead-brand">Swapnil Mishra</h3>
-            <nav>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">About Me</a></li>
-                <li><a href="#">My Work</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <div class="inner cover">
-          <img class="img-responsive masthead-logo" src="https://avatars3.githubusercontent.com/u/5261404" />
-          <h1 class="cover-heading">Full stack developer</h1>
-          <p class="lead">A listing of my work in web and mobile space dedicated to the open source community.</p>
-        </div>
-        <div class="mastfoot">
-          <div class="inner">
-            <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <main>
+    <section class="section" id="about">
+      <div class="section__header">
+        <h2>About</h2>
+        <p>An engineer who enjoys telling product stories through code.</p>
+      </div>
+      <div class="about">
+        <div class="about__card">
+          <div class="about__portrait" role="presentation"></div>
+          <div class="about__body">
+            <p>I partner with cross-functional teams to ship experiences that balance business goals with user empathy. From
+              building component-driven design systems to optimizing data APIs, I love creating software that feels both
+              elegant and dependable.</p>
+            <p class="about__quote">“The best ideas emerge when designers and engineers problem-solve together.”</p>
+            <ul class="about__list">
+              <li>Full stack development with TypeScript, React, Node.js, and GraphQL</li>
+              <li>Solution design across AWS, microservices, and data-intensive systems</li>
+              <li>Team enablement via documentation, mentoring, and agile facilitation</li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="section section--alt" id="skills">
+      <div class="section__header">
+        <h2>Skills Snapshot</h2>
+        <p>Capabilities that help products move from prototype to production.</p>
+      </div>
+      <div class="skills">
+        <article class="skill">
+          <h3>Frontend Engineering</h3>
+          <p>Design systems, accessibility-first UI, performance tuning, and interactive visualizations in React and
+            TypeScript.</p>
+          <ul>
+            <li>React, Next.js, Redux</li>
+            <li>Design tokens & Storybook</li>
+            <li>Testing Library, Cypress</li>
+          </ul>
+        </article>
+        <article class="skill">
+          <h3>Backend & APIs</h3>
+          <p>Resilient microservices, domain-driven design, and API architectures that scale with product adoption.</p>
+          <ul>
+            <li>Node.js, Express, NestJS</li>
+            <li>GraphQL, REST, gRPC</li>
+            <li>PostgreSQL, Redis, MongoDB</li>
+          </ul>
+        </article>
+        <article class="skill">
+          <h3>Cloud & DevOps</h3>
+          <p>Cloud-native delivery pipelines with observability, security, and automation baked into every release.</p>
+          <ul>
+            <li>AWS, Docker, Kubernetes</li>
+            <li>CI/CD with GitHub Actions</li>
+            <li>Infrastructure as Code</li>
+          </ul>
+        </article>
+        <article class="skill">
+          <h3>Collaboration</h3>
+          <p>Leading squads with clarity, shaping roadmaps, and mentoring engineers to multiply impact.</p>
+          <ul>
+            <li>Technical leadership & facilitation</li>
+            <li>Discovery workshops</li>
+            <li>Written & visual storytelling</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section__header">
+        <h2>Experience</h2>
+        <p>Highlights from a career spent crafting full stack products.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <header>
+              <h3>Lead Software Engineer · Fintech Platform</h3>
+              <span>2021 — Present</span>
+            </header>
+            <p>Architected the transition to an event-driven platform that powers onboarding for 200k+ customers. Reduced
+              deployment time from hours to minutes by rolling out containerized CI/CD pipelines.</p>
+          </div>
+        </article>
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <header>
+              <h3>Senior Full Stack Developer · SaaS Analytics</h3>
+              <span>2017 — 2021</span>
+            </header>
+            <p>Developed a modular analytics suite with React and GraphQL, enabling customizable dashboards used by
+              enterprise partners worldwide. Championed accessibility and automated testing initiatives.</p>
+          </div>
+        </article>
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <header>
+              <h3>Software Engineer · Digital Agency</h3>
+              <span>2014 — 2017</span>
+            </header>
+            <p>Partnered with designers to build award-winning marketing experiences across sectors. Introduced component
+              libraries and improved collaboration between design and engineering teams.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="contributions">
+      <div class="section__header">
+        <h2>Selected Contributions</h2>
+        <p>Work that showcases a blend of product thinking, leadership, and engineering craft.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>Design System Rollout</h3>
+          <p>Introduced an enterprise design system with React, Storybook, and design tokens. Resulted in 40% faster feature
+            delivery and consistent accessibility compliance.</p>
+        </article>
+        <article class="card">
+          <h3>Customer Insights Platform</h3>
+          <p>Led development of a multi-tenant analytics platform with real-time dashboards, driving a 25% uplift in customer
+            retention through actionable insights.</p>
+        </article>
+        <article class="card">
+          <h3>Engineering Community</h3>
+          <p>Organized internal tech talks and mentorship circles, fostering a culture of knowledge sharing and continuous
+            improvement across product squads.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="footer__inner">
+      <div class="footer__cta">
+        <h2>Let’s build something meaningful.</h2>
+        <p>Email me at <a href="mailto:hello@swapnilmishra.dev">hello@swapnilmishra.dev</a> or connect on the platforms
+          below.</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="https://github.com/devswapnil" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/devswapnil" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://medium.com/@devswapnil" target="_blank" rel="noopener">Writing</a></li>
+      </ul>
+      <p class="footer__note">© <span id="current-year"></span> Swapnil Mishra. Crafted with curiosity and care.</p>
     </div>
-  </div>
-  <!-- Bootstrap core JavaScript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/tagsCloud.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 
 </html>
+
