@@ -71,20 +71,6 @@
     const card = document.createElement('article');
     card.className = 'blog-card';
 
-    if (article.image) {
-      const media = document.createElement('div');
-      media.className = 'blog-card__media';
-
-      const image = document.createElement('img');
-      image.className = 'blog-card__image';
-      image.src = article.image;
-      image.loading = 'lazy';
-      image.alt = article.title;
-
-      media.appendChild(image);
-      card.appendChild(media);
-    }
-
     const title = document.createElement('h3');
     title.className = 'blog-card__title';
 
@@ -127,33 +113,6 @@
     const div = document.createElement('div');
     div.innerHTML = html;
     return (div.textContent || div.innerText || '').replace(/\s+/g, ' ').trim();
-  };
-
-  const ensureAbsoluteHttpUrl = (value) => {
-    if (typeof value !== 'string') return '';
-    if (/^https?:\/\//i.test(value)) {
-      return value;
-    }
-    return '';
-  };
-
-  const extractImageFromHtml = (html) => {
-    if (typeof html !== 'string') return '';
-    const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-    return match ? ensureAbsoluteHttpUrl(match[1]) : '';
-  };
-
-  const extractArticleImage = (item) => {
-    if (!item || typeof item !== 'object') return '';
-
-    const candidates = [
-      ensureAbsoluteHttpUrl(item.thumbnail),
-      item.enclosure && ensureAbsoluteHttpUrl(item.enclosure.link || item.enclosure.url),
-      extractImageFromHtml(item.content),
-      extractImageFromHtml(item.description),
-    ].filter(Boolean);
-
-    return candidates[0] || '';
   };
 
   const estimateReadingTime = (wordCount) => {
@@ -221,7 +180,6 @@
           pubDate: formatDate(item.pubDate),
           readingTime: estimateReadingTime(words),
           excerpt,
-          image: extractArticleImage(item),
         });
 
         container.appendChild(card);
