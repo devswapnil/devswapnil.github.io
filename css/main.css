@@ -286,19 +286,29 @@ img {
 }
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 2.75rem;
   height: 2.75rem;
   flex-shrink: 0;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-  color: var(--on-accent);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  overflow: hidden;
   text-decoration: none;
-  font-family: "Space Grotesk", sans-serif;
+  /* Gradient ring reads as intentional framing and keeps the photo separated
+     from the translucent nav on both themes. */
+  box-shadow: 0 0 0 2px var(--accent-strong);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .nav__links {
@@ -600,17 +610,12 @@ img {
 }
 
 .about__portrait {
+  width: 100%;
   aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
   border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--on-accent);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
 
