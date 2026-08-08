@@ -56,6 +56,67 @@
     yearEl.textContent = new Date().getFullYear();
   }
 
+  // Theme toggle. The initial theme is applied by an inline script in <head> so
+  // the stored choice never flashes; this only handles switching afterwards.
+  const themeToggle = document.querySelector('[data-theme-toggle]');
+
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (error) {
+      /* Storage unavailable (private mode); the theme still applies for this page. */
+    }
+  };
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
+  }
+
+  // Count-up on the stats strip. Values are already in the markup, so this is
+  // purely decorative and is skipped entirely when motion is reduced.
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const statValues = Array.from(document.querySelectorAll('[data-count-to]'));
+
+  const runCountUp = (el) => {
+    const target = Number(el.getAttribute('data-count-to'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    if (Number.isNaN(target)) return;
+
+    const duration = 1200;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      }
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  if (!prefersReducedMotion && statValues.length > 0 && 'IntersectionObserver' in window) {
+    const statObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          runCountUp(entry.target);
+          statObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    statValues.forEach((el) => statObserver.observe(el));
+  }
+
   const mediumFeedContainer = document.querySelector('[data-medium-feed]');
 
   const renderMediumError = (container, message) => {
