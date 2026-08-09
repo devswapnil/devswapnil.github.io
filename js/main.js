@@ -76,9 +76,110 @@
     });
   }
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal. Elements start hidden via `html.js .reveal` in CSS, so if
+  // anything here fails to run they must still end up visible — hence the
+  // unconditional fallback that marks everything shown.
+  const revealTargets = Array.from(document.querySelectorAll('.reveal'));
+
+  const showAll = (els) => els.forEach((el) => el.classList.add('is-visible'));
+
+  if (revealTargets.length > 0) {
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      showAll(revealTargets);
+    } else {
+      // Stagger siblings so groups (skill cards, recognition columns) cascade
+      // rather than snapping in together.
+      revealTargets.forEach((el) => {
+        const siblings = Array.from(el.parentElement ? el.parentElement.children : []);
+        const index = siblings.indexOf(el);
+        el.style.setProperty('--reveal-delay', `${Math.min(index, 5) * 60}ms`);
+      });
+
+      const pending = new Set(revealTargets);
+
+      const show = (el) => {
+        el.classList.add('is-visible');
+        pending.delete(el);
+        revealObserver.unobserve(el);
+      };
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) show(entry.target);
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+      );
+
+      revealTargets.forEach((el) => revealObserver.observe(el));
+
+      // IntersectionObserver is not guaranteed to fire for elements that pass
+      // through the viewport between frames, so a fast jump (Cmd+End, dragging
+      // the scrollbar, a smooth-scrolled anchor) can otherwise strand content
+      // at opacity 0. Sweep anything at or above the viewport bottom.
+      let ticking = false;
+
+      const sweep = () => {
+        ticking = false;
+        if (pending.size === 0) {
+          window.removeEventListener('scroll', onScroll);
+          return;
+        }
+        const limit = window.innerHeight;
+        Array.from(pending).forEach((el) => {
+          if (el.getBoundingClientRect().top < limit) show(el);
+        });
+      };
+
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(sweep);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      window.addEventListener('load', sweep);
+      sweep();
+    }
+  }
+
+  // Hero entrance, staggered on load rather than by the observer.
+  const heroStagger = Array.from(document.querySelectorAll('.hero__stagger'));
+
+  if (heroStagger.length > 0) {
+    if (prefersReducedMotion) {
+      showAll(heroStagger);
+    } else {
+      heroStagger.forEach((el, i) => {
+        el.style.setProperty('--reveal-delay', `${i * 60}ms`);
+      });
+      requestAnimationFrame(() => requestAnimationFrame(() => showAll(heroStagger)));
+    }
+  }
+
+  // Nav condenses once the page scrolls. A sentinel avoids a scroll handler.
+  const nav = document.querySelector('.nav');
+
+  if (nav && 'IntersectionObserver' in window) {
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:40px;pointer-events:none;';
+    document.body.prepend(sentinel);
+
+    const navObserver = new IntersectionObserver(
+      ([entry]) => nav.classList.toggle('is-scrolled', !entry.isIntersecting),
+      { threshold: 0 }
+    );
+
+    navObserver.observe(sentinel);
+  }
+
   // Count-up on the stats strip. Values are already in the markup, so this is
   // purely decorative and is skipped entirely when motion is reduced.
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const statValues = Array.from(document.querySelectorAll('[data-count-to]'));
 
   const runCountUp = (el) => {

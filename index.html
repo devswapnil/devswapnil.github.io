@@ -37,6 +37,9 @@
   <script>
     // Applied before first paint so the stored theme never flashes.
     (function () {
+      // Marks JS as live. Scroll-reveal hides its elements behind `html.js`, so
+      // if this never runs the page still renders fully visible.
+      document.documentElement.classList.add('js');
       try {
         var stored = localStorage.getItem('theme');
         var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -111,27 +114,26 @@
 
     <div class="hero__content">
       <div class="hero__copy">
-        <p class="eyebrow">Vice President · J.P. Morgan</p>
-        <h1>Swapnil Mishra</h1>
-        <p class="hero__title">Lead Software Engineer, building scalable software solutions</p>
-        <p class="hero__lead">Sixteen years turning complex problems into platforms people actually use — from a
-          productivity tool reaching 250,000+ users worldwide to a collaboration SDK adopted across global lines of
-          business.</p>
-        <div class="hero__cta">
+        <p class="eyebrow hero__stagger">Vice President · J.P. Morgan</p>
+        <h1 class="hero__stagger">Swapnil Mishra</h1>
+        <p class="hero__title hero__stagger">Lead Software Engineer, building scalable software solutions</p>
+        <p class="hero__lead hero__stagger">Sixteen years turning complex problems into platforms people actually
+          use — from a productivity tool reaching 250,000+ users worldwide to a collaboration SDK adopted across
+          global lines of business.</p>
+        <div class="hero__cta hero__stagger">
           <a class="btn" href="#experience">View experience</a>
           <a class="btn btn--ghost" href="#contact">Get in touch</a>
         </div>
-        <p class="hero__meta">
+        <p class="hero__meta hero__stagger">
           <span aria-hidden="true">◆</span> Bengaluru, Karnataka, India
         </p>
       </div>
 
-      <div class="hero__visual" aria-hidden="true">
-        <div class="orbit">
-          <span class="planet"></span>
-          <span class="satellite"></span>
-          <span class="satellite satellite--two"></span>
-        </div>
+      <div class="hero__visual hero__stagger">
+        <figure class="portrait">
+          <img class="portrait__img" src="images/swapnil-mishra.jpg" alt="Portrait of Swapnil Mishra" width="382"
+            height="382">
+        </figure>
       </div>
     </div>
 
@@ -163,14 +165,12 @@
     </section>
 
     <section class="section" id="about">
-      <div class="section__header">
+      <div class="section__header reveal">
         <h2>About</h2>
         <p>An engineer who measures work by the people it reaches.</p>
       </div>
       <div class="about">
-        <div class="about__card">
-          <img class="about__portrait" src="images/swapnil-mishra.jpg" alt="Portrait of Swapnil Mishra"
-            width="382" height="382" loading="lazy">
+        <div class="about__card reveal">
           <div class="about__body">
             <p>With over a decade and a half of experience, I serve as Vice President and Lead Software Engineer at
               J.P. Morgan, where I focus on developing scalable and impactful software solutions. My work centres on
@@ -192,13 +192,13 @@
     </section>
 
     <section class="section section--alt" id="experience">
-      <div class="section__header">
+      <div class="section__header reveal">
         <h2>Experience</h2>
         <p>Sixteen years, from junior developer to Vice President.</p>
       </div>
 
       <div class="timeline">
-        <article class="timeline__item">
+        <article class="timeline__item reveal">
           <div class="timeline__dot"></div>
           <div class="timeline__content">
             <header class="timeline__company">
@@ -245,7 +245,7 @@
           </div>
         </article>
 
-        <article class="timeline__item">
+        <article class="timeline__item reveal">
           <div class="timeline__dot"></div>
           <div class="timeline__content">
             <header class="timeline__company">
@@ -269,7 +269,7 @@
           </div>
         </article>
 
-        <article class="timeline__item">
+        <article class="timeline__item reveal">
           <div class="timeline__dot"></div>
           <div class="timeline__content">
             <header class="timeline__company">
@@ -310,12 +310,12 @@
     </section>
 
     <section class="section" id="skills">
-      <div class="section__header">
+      <div class="section__header reveal">
         <h2>Skills</h2>
         <p>Grouped by where they were actually earned.</p>
       </div>
       <div class="skills">
-        <article class="skill">
+        <article class="skill reveal">
           <h3>Core engineering</h3>
           <p>The stack behind the platforms and productivity tools built at J.P. Morgan.</p>
           <ul>
@@ -326,7 +326,7 @@
             <li>SDK &amp; platform design</li>
           </ul>
         </article>
-        <article class="skill">
+        <article class="skill reveal">
           <h3>Leadership</h3>
           <p>Sixteen years of shipping with teams — sprint planning, architecture calls, and holding a quality bar.</p>
           <ul>
@@ -336,7 +336,7 @@
             <li>Mentoring engineers</li>
           </ul>
         </article>
-        <article class="skill">
+        <article class="skill reveal">
           <h3>Data &amp; ML</h3>
           <p>From the M.Tech in Data Science &amp; Engineering at BITS Pilani, plus published research.</p>
           <ul>
@@ -345,7 +345,7 @@
             <li>Generative AI foundations</li>
           </ul>
         </article>
-        <article class="skill">
+        <article class="skill reveal">
           <h3>Foundations</h3>
           <p>The 2010–2017 years — where the habits came from.</p>
           <ul>
@@ -359,13 +359,13 @@
     </section>
 
     <section class="section section--alt" id="recognition">
-      <div class="section__header">
+      <div class="section__header reveal">
         <h2>Recognition</h2>
         <p>Awards, publications and certifications.</p>
       </div>
 
       <div class="recognition">
-        <div class="recognition__group">
+        <div class="recognition__group reveal">
           <h3 class="recognition__title">Honours &amp; awards</h3>
           <ul class="recognition__list">
             <li>
@@ -391,7 +391,7 @@
           </ul>
         </div>
 
-        <div class="recognition__group">
+        <div class="recognition__group reveal">
           <h3 class="recognition__title">Publications</h3>
           <ul class="recognition__list">
             <li>
@@ -410,7 +410,7 @@
           </ul>
         </div>
 
-        <div class="recognition__group">
+        <div class="recognition__group reveal">
           <h3 class="recognition__title">Education</h3>
           <ul class="education">
             <li>
@@ -435,7 +435,7 @@
     </section>
 
     <section class="section" id="writing">
-      <div class="section__header">
+      <div class="section__header reveal">
         <h2>Latest writing</h2>
         <p>Recent articles from my Medium publication.</p>
       </div>
@@ -455,7 +455,7 @@
 
   <footer class="footer" id="contact">
     <div class="footer__inner">
-      <div class="footer__cta">
+      <div class="footer__cta reveal">
         <p class="eyebrow">Get in touch</p>
         <h2>Let's build something that scales.</h2>
         <p>Open to conversations about engineering leadership, platform work, and interesting problems.</p>
